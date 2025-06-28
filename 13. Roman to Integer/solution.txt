@@ -1,0 +1,42 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var romanToInt = function (s) {
+    let number = 0;
+    const map = {
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000
+    };
+
+
+    for (let i = 0; i < s.length; i++) {
+        let char = s[i];
+        let nextChar = s[i + 1]
+        const value = map[char]
+        number += value
+
+
+
+        if (char === 'I' && nextChar === "V" || char === 'I' && nextChar === "X") {
+            number -= 2
+        }
+
+        else if (char === 'X' && nextChar === "L" || char === 'X' && nextChar === "C") {
+            number -= 20
+        }
+
+        else if (char === 'C' && nextChar === "D" || char === 'C' && nextChar === "M") {
+            number -= 200
+        }
+
+
+    }
+
+    return number
+};

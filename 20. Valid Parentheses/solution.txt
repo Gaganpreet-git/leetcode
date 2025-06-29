@@ -1,0 +1,32 @@
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function (s) {
+    const map = {
+        ")": "(",
+        "}": "{",
+        "]": "[",
+    }
+
+    const openingParentheses = ["(", "[", "{"]
+
+    const stack = [];
+
+    for (let i = 0; i < s.length; i++) {
+        const current = s[i];
+        if (openingParentheses.includes(current)) {
+            stack.push(current);
+        } else {
+            if (map[current] === stack[stack.length - 1]) {
+                stack.pop()
+            } else {
+                return false
+            }
+        }
+
+    }
+
+    return stack.length === 0
+
+};

@@ -1,0 +1,23 @@
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function (s) {
+    let str = s.toLowerCase()
+    let filteredString = '';
+
+    for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+        const charCode = char.charCodeAt(0)
+
+        if (charCode >= 97 && charCode <= 122 || charCode >= 48 && charCode <= 57) {
+            filteredString += char
+        }
+    }
+
+    const reversed = filteredString.split('').reverse().join('');
+    return filteredString === reversed
+
+
+};
+

@@ -1,0 +1,35 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {number[]} nums
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var modifiedList = function (nums, head) {
+    const set = new Set(nums);
+
+    let dummy = new ListNode(0)
+    dummy.next = head
+
+    let current = dummy.next
+    let prev = dummy
+
+    while (current) {
+        const next = current.next
+        if (set.has(current.val)) {
+            prev.next = next
+
+        } else {
+            prev = current
+        }
+
+
+        current = next
+    }
+    return dummy.next
+};
